@@ -5,11 +5,11 @@ WIN = {"AA": 3, "AB": 6, "AC": 0, "BA": 0, "BB": 3, "BC": 6, "CA": 6, "CB": 0, "
 MATCH_TABLE = {"X": "A", "Y": "B", "Z": "C"}
 
 
-def calculate_game_points(player1, player2, match_table, points, win):
+def calculate_game_points(player1, player2):
     """Calculate the elf game points for the day 2, first part"""
-    matched2 = match_table[player2]
+    matched2 = MATCH_TABLE[player2]
     pkey = f"{player1}{matched2}"
-    return win[pkey] + points[matched2]
+    return WIN[pkey] + POINTS[matched2]
 
 
 def day21():
@@ -21,7 +21,7 @@ def day21():
     tot = 0
     for dummy, value in enumerate(lines):
         party = value.split()
-        tot = tot + calculate_game_points(party[0], party[1], MATCH_TABLE, POINTS, WIN)
+        tot = tot + calculate_game_points(party[0], party[1])
 
     print(tot)
 
