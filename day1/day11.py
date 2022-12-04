@@ -1,4 +1,4 @@
-with open("task1/input.txt") as file:
+with open("day1/input.txt") as file:
     lines = [line.rstrip() for line in file]
 
 elf = 1

@@ -13,7 +13,7 @@ def calculate_priority(s, priorities = priorities):
         return 0
 
 
-with open("task4/input.txt") as file:
+with open("day3/input.txt") as file:
     lines = [line.rstrip() for line in file]
 
 tot = 0

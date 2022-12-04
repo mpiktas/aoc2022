@@ -1,4 +1,4 @@
-with open("task6/input.txt") as file:
+with open("day4/input.txt") as file:
     lines = [line.rstrip() for line in file]
 
 def compare1(r1, r2): 

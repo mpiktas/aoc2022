@@ -1,4 +1,4 @@
-with open("task2/input.txt") as file:
+with open("day2/input.txt") as file:
     lines = [line.rstrip() for line in file]
 
 
