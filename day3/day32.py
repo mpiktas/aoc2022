@@ -15,6 +15,6 @@ tot = 0
 for i in range(3, len(lines) + 3, 3):
     # print(i)
     # print(lines[i-3:i])
-    tot = tot + calculate_priority(lines[i - 3 : i])  # noqa: E203
+    tot = tot + calculate_priority(lines[i - 3 : i])
 
 print(tot)
