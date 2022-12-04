@@ -1,12 +1,13 @@
 import string
 
-priorities = list(string.ascii_lowercase)+list(string.ascii_uppercase)
+priorities = list(string.ascii_lowercase) + list(string.ascii_uppercase)
 
-def calculate_priority(s, priorities = priorities):
-    n = len(s)//2
+
+def calculate_priority(s, priorities=priorities):
+    n = len(s) // 2
     i = list(set(s[:n]).intersection(s[-n:]))
     if i:
-        return priorities.index(i[0])+1
+        return priorities.index(i[0]) + 1
     else:
         print(s)
         print(i)
@@ -25,4 +26,3 @@ print(tot)
 pp = [calculate_priority(x) for x in lines]
 
 print(sum(pp))
-

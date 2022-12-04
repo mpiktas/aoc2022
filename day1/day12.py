@@ -5,16 +5,12 @@ with open("day1/input.txt") as file:
 calories = 0
 elf = []
 for i, value in enumerate(lines):
-    if value != '':
+    if value != "":
         calories = calories + int(value)
     else:
-        elf = elf + [calories]        
+        elf = elf + [calories]
         calories = 0
-        
 
-elf.sort()       
+
+elf.sort()
 print(sum(elf[-3:]))
-
-
-
-
