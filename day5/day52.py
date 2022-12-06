@@ -22,16 +22,15 @@ def read_instructions(line):
     return instruction
 
 
-def transform_pile(pile, move):
+def transform_pile2(pile, move):
     stack = pile[move[1] - 1][-move[0] :]
-    stack.reverse()
     remainder = pile[move[1] - 1][: -move[0]]
     pile[move[1] - 1] = remainder.copy()
     pile[move[2] - 1] = pile[move[2] - 1].copy() + stack
 
 
-def day51():
-    """Day 5, part 1"""
+def day52():
+    """Day 5, part 2"""
 
     with open("day5/input.txt", encoding="utf-8") as file:
         lines = [line.rstrip() for line in file]
@@ -47,11 +46,11 @@ def day51():
 
     for i, instr in enumerate(instr_input):
         move = read_instructions(instr_input[i])
-        transform_pile(piles1, move)
+        transform_pile2(piles1, move)
 
     last_stack = [x[-1:] for x in piles1]
-    print(str(last_stack))
+    print(str(last_stack()))
 
 
 if __name__ == "__main__":
-    day51()
+    day52()
