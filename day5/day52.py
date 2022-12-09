@@ -1,28 +1,10 @@
 """Advent of code 2022, day 5"""
 
-
-def read_stack(stack_no, stacks):
-    """Read in the stacks at the beginning of the input"""
-    sl = [list(x) for x in stacks]
-    i = 1 + stack_no * 4
-    res = [x[i] for x in sl]
-    return res
-
-
-def remove_reverse(pile):
-    """Remove empty strings and reverse the pile"""
-    pile = [x for x in pile if x != " "]
-    pile.reverse()
-    return pile
-
-
-def read_instructions(line):
-    line_list = line.split(" ")
-    instruction = [int(line_list[i]) for i in [1, 3, 5]]
-    return instruction
+from day51 import read_instructions, read_stack, remove_reverse
 
 
 def transform_pile2(pile, move):
+    """Transform the pile according to part 2 rules"""
     stack = pile[move[1] - 1][-move[0] :]
     remainder = pile[move[1] - 1][: -move[0]]
     pile[move[1] - 1] = remainder.copy()
@@ -44,12 +26,12 @@ def day52():
 
     piles1 = piles.copy()
 
-    for i, instr in enumerate(instr_input):
-        move = read_instructions(instr_input[i])
+    for dummy, instr in enumerate(instr_input):
+        move = read_instructions(instr)
         transform_pile2(piles1, move)
 
     last_stack = [x[-1:] for x in piles1]
-    print(str(last_stack()))
+    print(str(last_stack))
 
 
 if __name__ == "__main__":

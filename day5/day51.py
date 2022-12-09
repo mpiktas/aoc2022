@@ -3,9 +3,9 @@
 
 def read_stack(stack_no, stacks):
     """Read in the stacks at the beginning of the input"""
-    sl = [list(x) for x in stacks]
+    stack_list = [list(x) for x in stacks]
     i = 1 + stack_no * 4
-    res = [x[i] for x in sl]
+    res = [x[i] for x in stack_list]
     return res
 
 
@@ -17,12 +17,14 @@ def remove_reverse(pile):
 
 
 def read_instructions(line):
+    """Parse the instructions in the line"""
     line_list = line.split(" ")
     instruction = [int(line_list[i]) for i in [1, 3, 5]]
     return instruction
 
 
 def transform_pile(pile, move):
+    """Transdorm the pile according to instructions"""
     stack = pile[move[1] - 1][-move[0] :]
     stack.reverse()
     remainder = pile[move[1] - 1][: -move[0]]
@@ -45,8 +47,8 @@ def day51():
 
     piles1 = piles.copy()
 
-    for i, instr in enumerate(instr_input):
-        move = read_instructions(instr_input[i])
+    for dummy, instr in enumerate(instr_input):
+        move = read_instructions(instr)
         transform_pile(piles1, move)
 
     last_stack = [x[-1:] for x in piles1]
