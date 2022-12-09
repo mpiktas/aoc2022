@@ -27,9 +27,8 @@ def transform_pile(pile, move):
     """Transdorm the pile according to instructions"""
     stack = pile[move[1] - 1][-move[0] :]
     stack.reverse()
-    remainder = pile[move[1] - 1][: -move[0]]
-    pile[move[1] - 1] = remainder.copy()
-    pile[move[2] - 1] = pile[move[2] - 1].copy() + stack
+    pile[move[1] - 1] = pile[move[1] - 1][: -move[0]]
+    pile[move[2] - 1] = pile[move[2] - 1] + stack
 
 
 def day51():

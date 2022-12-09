@@ -6,9 +6,8 @@ from day51 import read_instructions, read_stack, remove_reverse
 def transform_pile2(pile, move):
     """Transform the pile according to part 2 rules"""
     stack = pile[move[1] - 1][-move[0] :]
-    remainder = pile[move[1] - 1][: -move[0]]
-    pile[move[1] - 1] = remainder.copy()
-    pile[move[2] - 1] = pile[move[2] - 1].copy() + stack
+    pile[move[1] - 1] = pile[move[1] - 1][: -move[0]]
+    pile[move[2] - 1] = pile[move[2] - 1] + stack
 
 
 def day52():
