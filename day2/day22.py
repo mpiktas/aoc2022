@@ -1,12 +1,11 @@
-with open("day2/input.txt") as file:
-    lines = [line.rstrip() for line in file]
+"""Advent of code 2022, day 2"""
 
 
-points = {"A": 1, "B": 2, "C": 3}
+POINTS = {"A": 1, "B": 2, "C": 3}
 
-win = {"AA": 3, "AB": 6, "AC": 0, "BA": 0, "BB": 3, "BC": 6, "CA": 6, "CB": 0, "CC": 3}
+WIN = {"AA": 3, "AB": 6, "AC": 0, "BA": 0, "BB": 3, "BC": 6, "CA": 6, "CB": 0, "CC": 3}
 
-result = {
+RESULT = {
     "AX": "C",
     "AY": "A",
     "AZ": "B",
@@ -18,19 +17,30 @@ result = {
     "CZ": "A",
 }
 
-cr = {"X": "A", "Y": "B", "Z": "C"}
+MATCH_TABLE = {"X": "A", "Y": "B", "Z": "C"}
 
-ending = {"X": 0, "Y": 3, "Z": 6}
-
-
-def calculate_game_points(p1, p2, points=points, result=result, ending=ending):
-    pkey = f"{p1}{p2}"
-    return ending[p2] + points[result[pkey]]
+ENDING = {"X": 0, "Y": 3, "Z": 6}
 
 
-tot = 0
-for i, value in enumerate(lines):
-    p = value.split()
-    tot = tot + calculate_game_points(p[0], p[1])
+def calculate_game_points2(player1, player2):
+    """Calculate the game points for task 2"""
+    pkey = f"{player1}{player2}"
+    return ENDING[player2] + POINTS[RESULT[pkey]]
 
-print(tot)
+
+def day22():
+    """Do day 2 part 2 task"""
+
+    with open("day2/input.txt", encoding="utf-8") as file:
+        lines = [line.rstrip() for line in file]
+
+    total = 0
+    for dummy, value in enumerate(lines):
+        game = value.split()
+        total = total + calculate_game_points2(game[0], game[1])
+
+    print(total)
+
+
+if __name__ == "__main__":
+    day22()
