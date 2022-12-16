@@ -1,25 +1,34 @@
-with open("day4/input.txt") as file:
-    lines = [line.rstrip() for line in file]
+"""Advent of code 2022, task2"""
+
+from day41 import str_to_int
 
 
-def compare1(r1, r2):
-    return (r1[0] <= r2[1]) & (r1[1] >= r2[0])
+def compare21(pair1, pair2):
+    """Compare two pairs"""
+    return (pair1[0] <= pair2[1]) & (pair1[1] >= pair2[0])
 
 
-def compare2(r1, r2):
-    return compare1(r1, r2) | compare1(r2, r1)
+def compare22(pairs1, pairs2):
+    """Do symmetrical comparison"""
+    return compare21(pairs1, pairs2) | compare21(pairs2, pairs1)
 
 
-def str_to_int(s):
-    return [int(x) for x in s]
+def treat_line2(line):
+    """Get the pairs from the line and compare them"""
+    line = [str_to_int(x.split("-")) for x in line.split(",")]
+    return compare22(line[0], line[1])
 
 
-def treat_line(s):
-    s = [str_to_int(x.split("-")) for x in s.split(",")]
-    return compare2(s[0], s[1])
+def day42():
+    """Do task 2 of day 4"""
+
+    with open("day4/input.txt", encoding="utf-8") as file:
+        lines = [line.rstrip() for line in file]
+
+    pairs = [treat_line2(x) for x in lines]
+
+    print(sum(pairs))
 
 
-cs = [treat_line(x) for x in lines]
-
-
-print(sum(cs))
+if __name__ == "__main__":
+    day42()
