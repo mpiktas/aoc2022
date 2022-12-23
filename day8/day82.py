@@ -7,7 +7,7 @@ from day81 import get_treemap
 def first_true(arr):
     """Find first true. Return number of false found plus one if true found"""
     pos = 0
-    for i, value in enumerate(arr):
+    for dummy, value in enumerate(arr):
         if not value:
             pos = pos + 1
         else:
@@ -21,9 +21,9 @@ def scenic_score(i, j, tmap):
     """Check tree visibility for a given cell"""
     left = first_true(np.flip(tmap[i, :j] - tmap[i, j]) >= 0)
     right = first_true((tmap[i, (j + 1) :] - tmap[i, j]) >= 0)
-    up = first_true(np.flip(tmap[:i, j] - tmap[i, j]) >= 0)
+    upd = first_true(np.flip(tmap[:i, j] - tmap[i, j]) >= 0)
     down = first_true((tmap[(i + 1) :, j] - tmap[i, j]) >= 0)
-    return left * right * up * down
+    return left * right * upd * down
 
 
 def day82(filename):

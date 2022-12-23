@@ -3,9 +3,9 @@
 import numpy as np
 
 
-def str_to_int_list(str):
+def str_to_int_list(string):
     """Convert string to int list"""
-    return [int(x) for x in list(str)]
+    return [int(x) for x in list(string)]
 
 
 def get_treemap(filename):
@@ -21,9 +21,9 @@ def check_visibility(i, j, tmap):
     # Check left
     left = sum(tmap[i, :j] >= tmap[i, j])
     right = sum(tmap[i, (j + 1) :] >= tmap[i, j])
-    up = sum(tmap[:i, j] >= tmap[i, j])
+    upd = sum(tmap[:i, j] >= tmap[i, j])
     down = sum(tmap[(i + 1) :, j] >= tmap[i, j])
-    return (left == 0) or (right == 0) or (up == 0) or (down == 0)
+    return (left == 0) or (right == 0) or (upd == 0) or (down == 0)
 
 
 def day81(filename):
