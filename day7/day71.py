@@ -13,7 +13,11 @@ def get_dir_size(root, hash_table):
     return hash_table[str(root)]
 
 
-def create_tree(top, lines):
+def create_tree(top):
+    """Create a directory tree from the command input"""
+    with open("day7/input.txt", encoding="utf-8") as file:
+        lines = [line.rstrip() for line in file]
+
     curdir = top
     nodetrack = Resolver("name")
     for line in lines:
@@ -34,16 +38,17 @@ def create_tree(top, lines):
                 Node(filename, size=int(size), parent=curdir, file=filename)
 
 
-def day71():
-    """Run the day 7 part 1"""
-    with open("day7/input.txt", encoding="utf-8") as file:
-        lines = [line.rstrip() for line in file]
-
-    top = Node("top")
-    create_tree(top, lines)
-    dirsizes = {}
+def do_dirs_and_sizes(top, dirsizes):
+    """Read in the directories and get their sizes"""
+    create_tree(top)
     get_dir_size(top.children[0], dirsizes)
 
+
+def day71():
+    """Run the day 7 part 1"""
+    top = Node("top")
+    dirsizes = {}
+    do_dirs_and_sizes(top, dirsizes)
     filtered = [value for (key, value) in dirsizes.items() if value <= 100000]
     print(sum(filtered))
 

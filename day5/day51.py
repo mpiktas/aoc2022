@@ -31,6 +31,14 @@ def transform_pile(pile, move):
     pile[move[2] - 1] = pile[move[2] - 1] + stack
 
 
+def read_piles(pile_input):
+    """Read in the piles"""
+    piles = [read_stack(i, pile_input) for i in range(9)]
+
+    piles = [remove_reverse(pile) for pile in piles]
+    return piles
+
+
 def day51():
     """Day 5, part 1"""
 
@@ -40,9 +48,7 @@ def day51():
     pile_input = lines[:8]
     instr_input = lines[10:]
 
-    piles = [read_stack(i, pile_input) for i in range(9)]
-
-    piles = [remove_reverse(pile) for pile in piles]
+    piles = read_piles(pile_input)
 
     piles1 = piles.copy()
 

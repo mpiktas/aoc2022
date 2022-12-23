@@ -1,18 +1,14 @@
 """Advent of code 2022, day 7"""
 from anytree import Node
-from day71 import create_tree, get_dir_size
+from day71 import do_dirs_and_sizes
 
 
 def day72():
     """Run the day 7 part 2"""
-    with open("day7/input.txt", encoding="utf-8") as file:
-        lines = [line.rstrip() for line in file]
 
     top = Node("top")
-
-    create_tree(top, lines)
     dirsizes = {}
-    get_dir_size(top.children[0], dirsizes)
+    do_dirs_and_sizes(top, dirsizes)
 
     dirsizes1 = [value for (key, value) in dirsizes.items()]
     dirsizes1.sort()
