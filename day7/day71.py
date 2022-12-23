@@ -13,12 +13,7 @@ def get_dir_size(root, hash_table):
     return hash_table[str(root)]
 
 
-def day71():
-    """Run the day 7 part 1"""
-    with open("day7/input.txt", encoding="utf-8") as file:
-        lines = [line.rstrip() for line in file]
-
-    top = Node("top")
+def create_tree(top, lines):
     curdir = top
     nodetrack = Resolver("name")
     for line in lines:
@@ -38,6 +33,14 @@ def day71():
                 size, filename = line.split(" ")
                 Node(filename, size=int(size), parent=curdir, file=filename)
 
+
+def day71():
+    """Run the day 7 part 1"""
+    with open("day7/input.txt", encoding="utf-8") as file:
+        lines = [line.rstrip() for line in file]
+
+    top = Node("top")
+    create_tree(top, lines)
     dirsizes = {}
     get_dir_size(top.children[0], dirsizes)
 
