@@ -44,12 +44,14 @@ def relative_tail(head, tail):
 
 def test_rope(head, tail):
     """Test whether the rope tail and head at the correct distance"""
-    c1 = abs(head[0] - tail[0])
-    c2 = abs(head[1] - tail[1])
-    return (c1 <= 1) & (c2 <= 1)
+    cond1 = abs(head[0] - tail[0])
+    cond2 = abs(head[1] - tail[1])
+    return (cond1 <= 1) & (cond2 <= 1)
 
 
 class Rope:
+    """Class for tracking rope movements"""
+
     def __init__(self, start):
         self.head = start
         self.tail = start
@@ -82,7 +84,7 @@ class Rope:
 
     def move_multiple(self, command):
         """Move the rope head multiple times"""
-        for x in range(int(command[1])):
+        for dummy in range(int(command[1])):
             self.move(command[0])
 
 
@@ -98,9 +100,10 @@ def day91(filename):
 
     rope = Rope([0, 0])
 
-    [rope.move_multiple(x) for x in moves]
+    for single_move in moves:
+        rope.move_multiple(single_move)
 
-    print(len(set([tail_to_str(x) for x in rope.tail_trace])))
+    print(len({tail_to_str(x) for x in rope.tail_trace}))
 
 
 if __name__ == "__main__":
