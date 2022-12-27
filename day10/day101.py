@@ -1,5 +1,9 @@
 """AOC 2022, day 10, part 1"""
 
+# The task is off by one cycle. Even looking at the task and counting manually
+# the test example does not produce the result in the task. You need to decrease
+# the cycle count by one to get the correct result.
+
 
 def read_instructions(filename):
     """Read the instructions"""
