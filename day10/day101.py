@@ -1,11 +1,15 @@
+"""AOC 2022, day 10, part 1"""
+
+
 def read_instructions(filename):
-    """Read the moves"""
+    """Read the instructions"""
     with open(filename, encoding="utf-8") as file:
         lines = [line.rstrip() for line in file]
     return [x.split(" ") for x in lines]
 
 
 def day101(filename):
+    """Do part 1 of day 10 task"""
     instr = read_instructions(filename)
     regx = [1]
     cycle = 0
@@ -20,9 +24,10 @@ def day101(filename):
         if (cmd[0] != "noop") and (cmd[0] != "addx"):
             raise RuntimeError("Wrong input")
 
-    signals = [regx[i] for i in [20, 60, 100, 140, 180, 220]]
+    signals = [regx[i - 1] for i in [20, 60, 100, 140, 180, 220]]
+
     print(signals)
-    signals = [regx[i] * i for i in [20, 60, 100, 140, 180, 220]]
+    signals = [regx[i - 1] * i for i in [20, 60, 100, 140, 180, 220]]
     print(sum(signals))
 
 
