@@ -12,9 +12,8 @@ def read_instructions(filename):
     return [x.split(" ") for x in lines]
 
 
-def day101(filename):
-    """Do part 1 of day 10 task"""
-    instr = read_instructions(filename)
+def reg_history(instr):
+    """Get the registry history"""
     regx = [1]
     cycle = 0
     for cmd in instr:
@@ -27,6 +26,14 @@ def day101(filename):
             cycle = cycle + 2
         if (cmd[0] != "noop") and (cmd[0] != "addx"):
             raise RuntimeError("Wrong input")
+    return regx
+
+
+def day101(filename):
+    """Do part 1 of day 10 task"""
+    instr = read_instructions(filename)
+
+    regx = reg_history(instr)
 
     signals = [regx[i - 1] for i in [20, 60, 100, 140, 180, 220]]
 
