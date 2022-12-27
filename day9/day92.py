@@ -43,6 +43,7 @@ class RopeN:
 
     def __init__(self, start, knot_count):
         self.knot_count = knot_count
+        # do not use * for initializing the lists. Use [l for i in range(n)] instead.
         self.knots = [start] * knot_count
         self.knot_trace = [[start]] * knot_count
         self.tail_trace = [start]
